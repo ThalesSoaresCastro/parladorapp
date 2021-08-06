@@ -3,3 +3,5 @@ Postgres/
 /parlador_api/node_modules
 
 /parlador_api/.env
+
+/parlador_api/dist
