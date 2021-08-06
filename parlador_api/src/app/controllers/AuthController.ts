@@ -5,8 +5,7 @@ import{
 import{ getRepository } from 'typeorm';
 import bcrypt from'bcryptjs';
 
-import User  from '../models/User';
-
+import User from '@models/User';
 import jwt from 'jsonwebtoken'; 
 
 interface NewUser{

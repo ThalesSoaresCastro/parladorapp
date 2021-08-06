@@ -8,7 +8,7 @@ import {
     ManyToOne,
 } from 'typeorm';
 
-import User from './User';
+import User from '@models/User';
 
 @Entity('posts')
 class Post {

@@ -10,7 +10,7 @@ import {
 
 import bcrypt from 'bcryptjs';
 
-import Post from './Post';
+import Post from '@models/Post';
 
 @Entity('users')
 class User {

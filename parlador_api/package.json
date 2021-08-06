@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "npx nodemon --exec ts-node --files src/index.ts",
+    "dev": "npx nodemon --exec ts-node -r tsconfig-paths/register --files --transpile-only --ignore node_modules src/index.ts",
     "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
@@ -18,6 +18,7 @@
     "nodemon": "^2.0.12",
     "ts-jest": "^27.0.4",
     "ts-node": "^10.1.0",
+    "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
