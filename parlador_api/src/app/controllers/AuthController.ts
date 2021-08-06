@@ -48,7 +48,7 @@ class AuthController{
         const userData:NewUser = user; 
         delete userData.password;
 
-        return res.status(201).json({
+        return res.status(200).json({
             message:'Sucess login',
             data:{
                 user: userData,

@@ -16,6 +16,63 @@ interface NewUser{
 
 class UserController{
 
+    //-------------------------------------------------------
+    async get_user(req: Request, res: Response){
+        
+        const repository = getRepository(User);
+
+        const {email} = req.body;
+
+        const user = await repository.findOne({where : { email }});
+
+        if(!user){
+            res.status(200).json({
+                message: "Users not exists",
+                data:[]
+            });
+            return;
+        }
+        
+        const user_return:NewUser = user;
+
+        //retirando os passwords...
+        delete user_return.password;
+        
+
+        res.status(200).json({
+            message: "Users exists",
+            data:user
+        });
+    }
+
+    //-------------------------------------------------------
+    async get_all(req: Request, res: Response){
+        
+        const repository = getRepository(User);
+
+        const users = await repository.find();
+
+        if(!users){
+            res.status(200).json({
+                message: "Users not exists",
+                data:[]
+            });
+            return;
+        }
+        
+        const users_array:Array<NewUser> = users;
+
+        //retirando os passwords...
+        users_array.map(user =>{
+            delete user.password;
+        })
+
+
+        res.status(200).json({
+            message: "Users exists",
+            data:users_array
+        });
+    }
     //-----------------------------------------------------------
     async store(req: Request, res: Response){
 
@@ -33,7 +90,7 @@ class UserController{
 
         //pegando a data atual para salvar no banco
         const datenow = new Date().toISOString();
-        
+
         const user = repository.create({
                                 name:name, 
                                 email:email, 
