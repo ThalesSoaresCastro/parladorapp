@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  postgres-db:
+    image: postgres
+    environment:
+        - POSTGRES_DB=parladorideal_app
+        - POSTGRES_USER=docker
+        - POSTGRES_PASSWORD=docker
+    ports:
+      - "5667:5432"
+    volumes:
+      - ./Postgres:/var/lib/postgresql/data 
+    networks:
+      - postgres-compose-network
+      
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "docker@teste.com"
+      PGADMIN_DEFAULT_PASSWORD: "docker"
+    ports:
+      - "16543:80"
+    depends_on:
+      - postgres-db
+    networks:
+      - postgres-compose-network
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
