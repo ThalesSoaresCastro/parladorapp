@@ -1,0 +1,18 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 6557,
+    "username": "docker",
+    "password": "docker",
+    "database": "parladorideal_app",
+    "entities": [
+        "src/app/models/*.ts"
+     ],
+     "migrations": [
+        "src/database/migrations/*.ts"
+     ],
+     "cli":{
+         "migrationsDir":"src/database/migrations"
+     }
+
+}
