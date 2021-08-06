@@ -1,10 +1,10 @@
 import {
-    Response, 
-    Request, 
-    NextFunction
-} from 'express';
+  Response,
+  Request,
+  NextFunction
+} from 'express'
 
-import jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken'
 
 interface TokenPayload{
     id:string;
@@ -12,31 +12,28 @@ interface TokenPayload{
     exp:number;
 }
 
-export default function authMiddleware(
-    req: Request, res: Response, next: NextFunction){
+export default function authMiddleware (
+  req: Request, res: Response, next: NextFunction) {
+  const { authorization } = req.headers
 
-        const {authorization} = req.headers;
-        
-        if(!authorization){
-            res.status(401).json({message: "Unauthorized user" });
-            return;
-        }
+  if (!authorization) {
+    res.status(401).json({ message: 'Unauthorized user' })
+    return
+  }
 
-        const token = authorization.replace('Bearer', '').trim();
+  const token = authorization.replace('Bearer', '').trim()
 
-        try{
-            //criando token de autenticação
-            const secret:string = process.env.SECRET!;
-            const data = jwt.verify(token, secret);
+  try {
+    // criando token de autenticação
+    const secret:string = process.env.SECRET!
+    const data = jwt.verify(token, secret)
 
-            const { id } = data as TokenPayload;
+    const { id } = data as TokenPayload
 
-            req.userId = id;
-            
-            return next();
+    req.userId = id
 
-        }catch{
-            res.status(401).json({message: "Unauthorized user" });
-            return;
-        }
+    return next()
+  } catch {
+    res.status(401).json({ message: 'Unauthorized user' })
+  }
 }

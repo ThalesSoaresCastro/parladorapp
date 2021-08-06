@@ -1,11 +1,12 @@
-import{
-    Request,
-    Response,
-}from 'express';
+/* eslint-disable camelcase */
+import {
+  Request,
+  Response
+} from 'express'
 
-import{ getRepository } from 'typeorm';
+import { getRepository } from 'typeorm'
 
-import User from '@models/User';
+import User from '@models/User'
 
 interface NewUser{
     id:string;
@@ -14,103 +15,100 @@ interface NewUser{
     created_at:Date;
 }
 
-class UserController{
+class UserController {
+  // -------------------------------------------------------
+  async get_user (req: Request, res: Response) {
+    const repository = getRepository(User)
 
-    //-------------------------------------------------------
-    async get_user(req: Request, res: Response){
-        
-        const repository = getRepository(User);
+    const { email } = req.body
 
-        const {email} = req.body;
+    const user = await repository.findOne({ where: { email } })
 
-        const user = await repository.findOne({where : { email }});
-
-        if(!user){
-            res.status(200).json({
-                message: "Users not exists",
-                data:[]
-            });
-            return;
-        }
-        
-        const user_return:NewUser = user;
-
-        //retirando os passwords...
-        delete user_return.password;
-        
-
-        res.status(200).json({
-            message: "Users exists",
-            data:user
-        });
+    if (!user) {
+      res.status(200).json({
+        message: 'Users not exists',
+        data: []
+      })
+      return
     }
 
-    //-------------------------------------------------------
-    async get_all(req: Request, res: Response){
-        
-        const repository = getRepository(User);
+    const user_return:NewUser = user
 
-        const users = await repository.find();
+    // retirando os passwords...
+    delete user_return.password
 
-        if(!users){
-            res.status(200).json({
-                message: "Users not exists",
-                data:[]
-            });
-            return;
-        }
-        
-        const users_array:Array<NewUser> = users;
+    res.status(200).json({
+      message: 'Users exists',
+      data: user
+    })
+  }
 
-        //retirando os passwords...
-        users_array.map(user =>{
-            delete user.password;
-        })
+  // -------------------------------------------------------
+  async get_all (req: Request, res: Response) {
+    const repository = getRepository(User)
 
+    const users = await repository.find()
 
-        res.status(200).json({
-            message: "Users exists",
-            data:users_array
-        });
+    if (!users) {
+      res.status(200).json({
+        message: 'Users not exists',
+        data: []
+      })
+      return
     }
-    //-----------------------------------------------------------
-    async store(req: Request, res: Response){
 
-        const repository = getRepository(User);
+    const users_array:Array<NewUser> = users
 
-        //verificando se email já existe
-        const {name, email, password} = req.body;
+    // retirando os passwords...
+    // eslint-disable-next-line array-callback-return
+    users_array.map((user) => {
+      delete user.password
+    })
 
-        const userExists = await repository.findOne({ where: { email } });
-        
-        if(userExists){
-            res.status(409).json({message: "User exists" });
-            return;
-        }
+    res.status(200).json({
+      message: 'Users exists',
+      data: users_array
+    })
+  }
 
-        //pegando a data atual para salvar no banco
-        const datenow = new Date().toISOString();
+  // -----------------------------------------------------------
+  async store (req: Request, res: Response) {
+    const repository = getRepository(User)
 
-        const user = repository.create({
-                                name:name, 
-                                email:email, 
-                                password:password,
-                                created_at:datenow});
-        
-        try{
-            await repository.save(user).catch(
-                res => console.log(res)
-            );
-            
-            //retirando password para enviar o user como retorno da requisição
-            const user_return:NewUser = user;
-            delete user_return.password;
+    // verificando se email já existe
+    const { name, email, password } = req.body
 
-            res.status(201).json({message:"Created user",data:user_return});
-        }catch{
-            res.status(500).json({message:"Error to save user", data:{}});
-        }
+    const userExists = await repository.findOne({ where: { email } })
+
+    if (userExists) {
+      res.status(409).json({ message: 'User exists' })
+      return
     }
+
+    // pegando a data atual para salvar no banco
+    const datenow = new Date().toISOString()
+
+    const user = repository.create({
+      name,
+      email,
+      password,
+      created_at: datenow
+    })
+
+    try {
+      await repository.save(user).catch(
+        (res) => console.log(res)
+      )
+
+      // retirando password para enviar o user como retorno da requisição
+      const user_return:NewUser = user
+      delete user_return.password
+
+      res.status(201).json({ message: 'Created user', data: user_return })
+    } catch {
+      res.status(500).json({ message: 'Error to save user', data: {} })
+    }
+  }
 }
 
-export default new UserController();
+export default new UserController()

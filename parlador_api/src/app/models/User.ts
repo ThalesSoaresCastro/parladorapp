@@ -1,23 +1,22 @@
+/* eslint-disable camelcase */
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    BeforeInsert,
-    BeforeUpdate,
-    Index,
-    OneToMany,
-} from 'typeorm';
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BeforeInsert,
+  BeforeUpdate,
+  OneToMany
+} from 'typeorm'
 
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs'
 
-import Post from '@models/Post';
+import Post from '@models/Post'
 
 @Entity('users')
 class User {
-
     @PrimaryGeneratedColumn('uuid')
     id:string;
-    
+
     @Column()
     name: string;
 
@@ -27,18 +26,17 @@ class User {
     @Column()
     password:string;
 
-    
     @BeforeInsert()
     @BeforeUpdate()
-    hasPassword(){
-        this.password = bcrypt.hashSync(this.password, 8);
+    hasPassword () {
+      this.password = bcrypt.hashSync(this.password, 8)
     }
 
-    @Column({ type:'timestamptz' })
+    @Column({ type: 'timestamptz' })
     created_at: Date;
 
-    @OneToMany(()=> Post, post => post.user)
+    @OneToMany(() => Post, post => post.user)
     posts: Post[];
 }
 
-export default User;
+export default User

@@ -1,12 +1,13 @@
-import{
-    Request,
-    Response,
-}from 'express';
-import{ getRepository } from 'typeorm';
-import bcrypt from'bcryptjs';
+/* eslint-disable camelcase */
+import {
+  Request,
+  Response
+} from 'express'
+import { getRepository } from 'typeorm'
+import bcrypt from 'bcryptjs'
 
-import User from '@models/User';
-import jwt from 'jsonwebtoken'; 
+import User from '@models/User'
+import jwt from 'jsonwebtoken'
 
 interface NewUser{
     id?:string;
@@ -16,46 +17,43 @@ interface NewUser{
     created_at:Date;
 }
 
-class AuthController{
+class AuthController {
+  async authenticate (req: Request, res: Response) {
+    const repository = getRepository(User)
 
-    async authenticate(req: Request, res: Response){
+    // verificando se email já existe
+    const { email, password } = req.body
 
-        const repository = getRepository(User);
+    const user = await repository.findOne({ where: { email } })
 
-        //verificando se email já existe
-        const {email, password} = req.body;
-
-        const user = await repository.findOne({ where: { email } });
-
-        if(!user){
-            res.status(401).json({message: "Unauthorized user" });
-            return;
-        }
-
-        const isValidPassword = await bcrypt.compare(password, user.password);
-
-        if(!isValidPassword){
-            res.status(401).json({message: "Unauthorized user" });
-            return;
-        }
-
-        //criando token de autenticação
-        const secret:string = process.env.SECRET!;
-        const token = jwt.sign({ id: user.id }, secret, { expiresIn:'1d' } );
-
-        //excluindo password para envio dos dados
-        const userData:NewUser = user; 
-        delete userData.password;
-
-        return res.status(200).json({
-            message:'Sucess login',
-            data:{
-                user: userData,
-                token:token,
-            }
-        });
-
+    if (!user) {
+      res.status(401).json({ message: 'Unauthorized user' })
+      return
     }
+
+    const isValidPassword = await bcrypt.compare(password, user.password)
+
+    if (!isValidPassword) {
+      res.status(401).json({ message: 'Unauthorized user' })
+      return
+    }
+
+    // criando token de autenticação
+    const secret:string = process.env.SECRET!
+    const token = jwt.sign({ id: user.id }, secret, { expiresIn: '1d' })
+
+    // excluindo password para envio dos dados
+    const userData:NewUser = user
+    delete userData.password
+
+    return res.status(200).json({
+      message: 'Sucess login',
+      data: {
+        user: userData,
+        token: token
+      }
+    })
+  }
 }
 
-export default new AuthController();
+export default new AuthController()
