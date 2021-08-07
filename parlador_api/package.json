@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "npx nodemon --exec ts-node -r tsconfig-paths/register --files --transpile-only --ignore node_modules src/index.ts",
-    "typeorm": "npx ts-node ./node_modules/typeorm/cli.js",
+    "typeorm": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
   "devDependencies": {

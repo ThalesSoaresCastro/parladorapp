@@ -98,7 +98,7 @@ class UserController {
           name: name,
           email: email,
           password: password,
-          created_at: datenow
+          edited_in: datenow
         })
 
       const user = await repository.findOne({ where: { email } })
@@ -210,9 +210,9 @@ class UserController {
     const datenow = new Date().toISOString()
 
     const user = repository.create({
-      name,
-      email,
-      password,
+      name: name,
+      email: email,
+      password: password,
       created_at: datenow
     })
 

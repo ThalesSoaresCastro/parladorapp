@@ -19,6 +19,12 @@ class ValidationValues {
 
     return true
   }
+
+  validation_post (text:string) {
+    if (!text) return false
+    if (text.length > 280) return false
+    return true
+  }
 }
 
 export default new ValidationValues()

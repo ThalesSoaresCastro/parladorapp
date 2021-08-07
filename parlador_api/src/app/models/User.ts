@@ -35,6 +35,9 @@ class User {
     @Column({ type: 'timestamptz' })
     created_at: Date;
 
+    @Column({ type: 'timestamptz', default: null, nullable: true })
+    edited_in!: Date | null;
+
     @OneToMany(() => Post, post => post.user)
     posts: Post[];
 }

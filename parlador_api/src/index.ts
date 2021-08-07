@@ -4,7 +4,7 @@ import 'dotenv/config'
 import 'reflect-metadata'
 import express from 'express'
 
-import morganMiddleware from '@/config/morganMiddleware'
+import morganMiddleware from '@middlewares/morganMiddleware'
 
 import createConnect from './database/connect'
 import routes from './routes'
