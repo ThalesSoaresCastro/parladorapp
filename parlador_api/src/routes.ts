@@ -11,6 +11,8 @@ router.post('/auth', AuthController.authenticate)
 
 router.post('/users', UserController.store)
 router.post('/getuser', authMiddleware, UserController.get_user)
+router.post('/deleteuser', authMiddleware, UserController.delete_user)
+router.post('/updateuser/:id', authMiddleware, UserController.update_user)
 
 // TESTE MIDDLEWARE
 router.get('/users', authMiddleware, UserController.get_all)
