@@ -94,4 +94,17 @@ describe('Teste for a tools class', () => {
       expect(false).toEqual(resp)
     })
   })
+
+  describe('Tests Space Validation', () => {
+    test('Value exists', () => {
+      const txt = 'test'
+      const resp = ValidationValues.validation_spaces(txt)
+      expect(true).toEqual(resp)
+    })
+    test('Value not exists', () => {
+      const txt = '                  '
+      const resp = ValidationValues.validation_spaces(txt)
+      expect(false).toEqual(resp)
+    })
+  })
 })

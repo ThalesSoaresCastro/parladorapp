@@ -21,8 +21,14 @@ class ValidationValues {
   }
 
   validation_post (text:string) {
+    if (!text.split(' ').join('')) return false
     if (!text) return false
     if (text.length > 280) return false
+    return true
+  }
+
+  validation_spaces (text:string) {
+    if (!text.split(' ').join('')) return false
     return true
   }
 }

@@ -29,7 +29,12 @@ class UserController {
       return
     }
 
-    if (email < 1) {
+    if (!ValidationValues.validation_spaces(email)) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
+
+    if (email.length < 1) {
       res.status(422).json({ message: 'Data format incorrect', data: {} })
       return
     }
@@ -71,8 +76,14 @@ class UserController {
       res.status(422).json({ message: 'Data format incorrect', data: {} })
       return
     }
+    if (!ValidationValues.validation_spaces(name) ||
+      !ValidationValues.validation_spaces(email) ||
+      !ValidationValues.validation_spaces(password)) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
 
-    if (name.length < 1 || email < 1 || password < 1) {
+    if (name.length < 1 || email.length < 1 || password.length < 1) {
       res.status(422).json({ message: 'Data format incorrect', data: {} })
       return
     }
@@ -119,6 +130,11 @@ class UserController {
     const { email } = req.body
 
     if (!email || email.length <= 0) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
+
+    if (!ValidationValues.validation_spaces(email)) {
       res.status(422).json({ message: 'Data format incorrect', data: {} })
       return
     }
@@ -188,8 +204,14 @@ class UserController {
       res.status(422).json({ message: 'Data format incorrect', data: {} })
       return
     }
+    if (!ValidationValues.validation_spaces(name) ||
+      !ValidationValues.validation_spaces(email) ||
+      !ValidationValues.validation_spaces(password)) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
 
-    if (name.length < 1 || email < 1 || password < 1) {
+    if (name.length < 1 || email.length < 1 || password.length < 1) {
       res.status(422).json({ message: 'Data format incorrect', data: {} })
       return
     }

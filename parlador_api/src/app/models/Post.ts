@@ -19,6 +19,12 @@ class Post {
     @Column({ type: 'timestamptz' })
     created_at: Date;
 
+    @Column({ type: 'timestamptz', default: null, nullable: true })
+    edited_in!: Date | null;
+
+    @Column({ default: false, nullable: true })
+    changed!: boolean;
+
     @ManyToOne(() => User, user => user.posts)
     user:User;
 }
