@@ -5,3 +5,5 @@ Postgres/
 /parlador_api/.env
 
 /parlador_api/dist
+
+/parlador_api/logs
