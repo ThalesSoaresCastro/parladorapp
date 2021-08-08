@@ -38,7 +38,7 @@ class User {
     @Column({ type: 'timestamptz', default: null, nullable: true })
     edited_in!: Date | null;
 
-    @OneToMany(() => Post, post => post.user)
+    @OneToMany(() => Post, post => post.user, { eager: true })
     posts: Post[];
 }
 

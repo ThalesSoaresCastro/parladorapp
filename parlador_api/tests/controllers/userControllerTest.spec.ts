@@ -1,6 +1,6 @@
 import request from 'supertest'
-import app from '../src/index'
-import createConnect from '../src/database/connect'
+import app from '../../src/index'
+import createConnect from '../../src/database/connect'
 
 import { getRepository } from 'typeorm'
 import User from '@models/User'

@@ -21,6 +21,8 @@ app.use(routes)
 
 const port_server = 4004
 
-app.listen(port_server, () => console.log(`Server run in http://localhost:${port_server}!\n`))
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port_server, () => console.log(`Server run in http://localhost:${port_server}!\n`))
+}
 
 export default app

@@ -25,7 +25,7 @@ class Post {
     @Column({ default: false, nullable: true })
     changed!: boolean;
 
-    @ManyToOne(() => User, user => user.posts)
+    @ManyToOne(() => User, user => user.posts, { cascade: true })
     user:User;
 }
 

@@ -26,7 +26,8 @@
       "@middlewares/*":["./src/app/middlewares/*"],
       "@models/*":["./src/app/models/*"],
       "@tools/*":["./src/app/tools/*"],
-      "@config/*":["./src/app/config/*"]
+      "@config/*":["./src/app/config/*"],
+      "@tests/":["./tests/*"]
     }
   }
 }
