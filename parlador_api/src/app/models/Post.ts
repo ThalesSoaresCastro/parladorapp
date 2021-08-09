@@ -20,7 +20,7 @@ class Post {
     created_at: Date;
 
     @Column({ type: 'timestamptz', default: null, nullable: true })
-    edited_in!: Date | null;
+    edited_in!: Date | null
 
     @Column({ default: false, nullable: true })
     changed!: boolean;
