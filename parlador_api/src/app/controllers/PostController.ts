@@ -21,6 +21,48 @@ interface NewUser{
 }
 
 class PostController {
+  async deletePost (req:Request, res:Response) {
+    const repository = getRepository(Post)
+    const userRepository = getRepository(User)
+
+    const { idpost } = req.body
+
+    // console.log('ID: ', idpost)
+
+    if (!idpost) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
+
+    if (idpost.length < 1) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
+
+    if (!ValidationValues.validation_spaces(idpost)) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
+
+    const postExists = await repository.findOne({ where: { id: idpost } })
+
+    if (!postExists) {
+      res.status(409).json({ message: 'Post not exists' })
+      return
+    }
+
+    try {
+      // retirando password para enviar o user como retorno da requisição
+      await repository.delete(postExists).catch(
+        err => { console.log(err) }
+      )
+
+      res.status(200).json({ message: 'Success to post deleted', data: postExists })
+    } catch {
+      res.status(500).json({ message: 'Error to delete post', data: {} })
+    }
+  }
+
   async updatePost (req:Request, res: Response) {
     const repository = getRepository(Post)
     const userRepository = getRepository(User)
@@ -85,8 +127,6 @@ class PostController {
     } catch {
       res.status(500).json({ message: 'Error to update user', data: {} })
     }
-
-    // procurar user
   }
 
   async getall (req: Request, res: Response) {

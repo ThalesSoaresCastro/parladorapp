@@ -9,6 +9,7 @@ import User from '@models/User'
 let token:string
 // let idTest:string
 let idPost:string
+let idPostDelete:string
 beforeAll(async () => {
   await createConnect()
   // add user to token
@@ -81,6 +82,7 @@ beforeAll(async () => {
     await postRepository.save(postTest2).catch(
       resp => console.log('add post test beforeall - second user: ', resp)
     )
+    idPostDelete = postTest2.id
   }
 
   // ---------------------------------------------------------------
@@ -97,6 +99,79 @@ afterAll(async () => {
 })
 
 describe('Tests of PostsController', () => {
+  describe('Remove posts Tests', () => {
+    test('Error idPost not exists', async () => {
+      const obj = {
+      }
+
+      const resp = await request(app)
+        .post('/deletepost')
+        .auth(token, { type: 'bearer' })
+        .send(obj)
+
+      expect(resp.statusCode).toEqual(422)
+      expect(resp.body.message).toContain('Data format incorrect')
+    })
+
+    test('Error idPost is space', async () => {
+      const obj = {
+        idpost: '              '
+      }
+
+      const resp = await request(app)
+        .post('/deletepost')
+        .auth(token, { type: 'bearer' })
+        .send(obj)
+
+      expect(resp.statusCode).toEqual(422)
+      expect(resp.body.message).toContain('Data format incorrect')
+    })
+
+    test('Error idPost is empty', async () => {
+      const obj = {
+        idpost: ''
+      }
+
+      const resp = await request(app)
+        .post('/deletepost')
+        .auth(token, { type: 'bearer' })
+        .send(obj)
+
+      expect(resp.statusCode).toEqual(422)
+      expect(resp.body.message).toContain('Data format incorrect')
+    })
+
+    test('Error id incorrect post', async () => {
+      const obj = {
+        idpost: '51f03bf7-5f0b-3b14-a509-6a278edb7edc'
+        // idpost: idPost
+      }
+
+      const resp = await request(app)
+        .post('/deletepost')
+        .auth(token, { type: 'bearer' })
+        .send(obj)
+
+      // console.log('res: ', resp.body)
+      expect(resp.statusCode).toEqual(409)
+      expect(resp.body.message).toContain('Post not exists')
+    })
+
+    test('Correct delete post', async () => {
+      const obj = {
+        idpost: idPostDelete
+      }
+
+      const resp = await request(app)
+        .post('/deletepost')
+        .auth(token, { type: 'bearer' })
+        .send(obj)
+
+      // console.log('res: ', resp.body)
+      expect(resp.statusCode).toEqual(200)
+      expect(resp.body.message).toContain('Success to post deleted')
+    })
+  })
   describe('Update Post tests', () => {
     test('Update post correct', async () => {
       const obj = {
