@@ -17,13 +17,13 @@ interface NewUser{
   password?:string;
   // eslint-disable-next-line camelcase
   created_at?:Date;
-  posts?: Array<Post>
+  posts?: Array<any>
 }
 
 class PostController {
   async deletePost (req:Request, res:Response) {
     const repository = getRepository(Post)
-    const userRepository = getRepository(User)
+    // const userRepository = getRepository(User)
 
     const { idpost } = req.body
 

@@ -20,7 +20,6 @@ interface NewUser{
 class UserController {
   async delete_user (req: Request, res: Response) {
     const repository = getRepository(User)
-
     // verificando se email já existe
     const { email } = req.body
 

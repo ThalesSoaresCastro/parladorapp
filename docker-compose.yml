@@ -3,29 +3,53 @@ version: '3'
 services:
   postgres-db:
     image: postgres
+    container_name: 'postgres-db'
     environment:
         - POSTGRES_DB=parladorideal_app
         - POSTGRES_USER=docker
         - POSTGRES_PASSWORD=docker
+        - PGPORT=6557
     ports:
-      - "6557:5432"
+      - '6557:5432'
     volumes:
       - ./Postgres:/var/lib/postgresql/data 
     networks:
-      - postgres-compose-network
+      - parlador-app
+    restart: 'always'
+    expose: 
+      - '6557'
       
   pgadmin-compose:
     image: dpage/pgadmin4
+    container_name: 'pgadmin-compose'
     environment:
       PGADMIN_DEFAULT_EMAIL: "docker@teste.com"
       PGADMIN_DEFAULT_PASSWORD: "docker"
     ports:
-      - "16543:80"
+      - '16543:80'
     depends_on:
       - postgres-db
     networks:
-      - postgres-compose-network
+      - parlador-app
 
+  ###########################################
+  #TESTE
+  parlador-api:
+    container_name: 'parlador-api'
+    build: './parlador_api'
+    command: bash -c 'while !</dev/tcp/postgres-db/6557; do sleep 1; done; npm start'
+    volumes:
+      - ./parlador_api:/usr/src/app/
+      - /usr/src/app/node_modules
+    ports:
+      - '4004:4004'
+    depends_on: 
+      - 'postgres-db'
+    networks:
+      - 'parlador-app'
+    environment: 
+      - DB_HOST=postgres-db
+  #############################################
 networks: 
-  postgres-compose-network:
+  parlador-app:
     driver: bridge

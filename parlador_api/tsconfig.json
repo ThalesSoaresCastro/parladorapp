@@ -22,6 +22,7 @@
     "baseUrl": ".",
     "paths":{
       "@/*":["./src/app/*"],
+      "@lib/":["./src/app/lib/*"],
       "@controllers/*":["./src/app/controllers/*"],
       "@middlewares/*":["./src/app/middlewares/*"],
       "@models/*":["./src/app/models/*"],

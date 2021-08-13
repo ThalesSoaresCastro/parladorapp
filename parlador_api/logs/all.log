@@ -44,3 +44,143 @@
 [35m[39m
 2021-08-07 19:07:12:712 [35mhttp[39m: [35mPOST /deleteuser 201 164 - 124.881 ms[39m
 [35m[39m
+2021-08-11 04:10:57:1057 [35mhttp[39m: [35mGET /allposts 401 31 - 5.417 ms[39m
+[35m[39m
+2021-08-11 04:10:58:1058 [35mhttp[39m: [35mGET /favicon.ico 404 150 - 2.386 ms[39m
+[35m[39m
+2021-08-12 01:32:18:3218 [35mhttp[39m: [35mGET / 404 139 - 8.687 ms[39m
+[35m[39m
+2021-08-12 01:32:25:3225 [35mhttp[39m: [35mGET /users 401 31 - 52.357 ms[39m
+[35m[39m
+2021-08-12 01:32:26:3226 [35mhttp[39m: [35mGET /favicon.ico 404 150 - 1.212 ms[39m
+[35m[39m
+2021-08-12 15:38:51:3851 [35mhttp[39m: [35mGET /allusers 404 147 - 317.774 ms[39m
+[35m[39m
+2021-08-12 15:38:57:3857 [35mhttp[39m: [35mGET /alluser 404 146 - 2.357 ms[39m
+[35m[39m
+2021-08-12 18:23:56:2356 [35mhttp[39m: [35mGET / 404 139 - 7.215 ms[39m
+[35m[39m
+2021-08-12 18:24:01:241 [35mhttp[39m: [35mGET /docs 301 175 - 3.399 ms[39m
+[35m[39m
+2021-08-12 18:24:01:241 [35mhttp[39m: [35mGET /docs/ 200 3104 - 3.605 ms[39m
+[35m[39m
+2021-08-12 18:24:01:241 [35mhttp[39m: [35mGET /docs/swagger-ui-init.js 200 1082 - 1.321 ms[39m
+[35m[39m
+2021-08-12 18:24:01:241 [35mhttp[39m: [35mGET /docs/swagger-ui-standalone-preset.js 200 337216 - 10.897 ms[39m
+[35m[39m
+2021-08-12 18:24:01:241 [35mhttp[39m: [35mGET /docs/swagger-ui-bundle.js 200 1091405 - 9.865 ms[39m
+[35m[39m
+2021-08-12 18:24:01:241 [35mhttp[39m: [35mGET /docs/swagger-ui.css 200 143669 - 75.020 ms[39m
+[35m[39m
+2021-08-12 18:24:02:242 [35mhttp[39m: [35mGET /swagger.json 404 151 - 2.361 ms[39m
+[35m[39m
+2021-08-12 18:24:02:242 [35mhttp[39m: [35mGET /docs/favicon-32x32.png 200 628 - 26.194 ms[39m
+[35m[39m
+2021-08-12 18:25:31:2531 [35mhttp[39m: [35mGET /docs/ 304 - - 8.226 ms[39m
+[35m[39m
+2021-08-12 18:25:32:2532 [35mhttp[39m: [35mGET /docs/swagger-ui.css 304 - - 4.101 ms[39m
+[35m[39m
+2021-08-12 18:25:32:2532 [35mhttp[39m: [35mGET /docs/swagger-ui-init.js 304 - - 1.887 ms[39m
+[35m[39m
+2021-08-12 18:25:32:2532 [35mhttp[39m: [35mGET /docs/swagger-ui-bundle.js 304 - - 8.694 ms[39m
+[35m[39m
+2021-08-12 18:25:32:2532 [35mhttp[39m: [35mGET /docs/swagger-ui-standalone-preset.js 304 - - 9.119 ms[39m
+[35m[39m
+2021-08-12 18:25:32:2532 [35mhttp[39m: [35mGET /swagger.json 200 353 - 3.322 ms[39m
+[35m[39m
+2021-08-12 18:34:42:3442 [35mhttp[39m: [35mGET /docs/ 304 - - 10.861 ms[39m
+[35m[39m
+2021-08-12 18:34:42:3442 [35mhttp[39m: [35mGET /docs/swagger-ui.css 304 - - 4.339 ms[39m
+[35m[39m
+2021-08-12 18:34:42:3442 [35mhttp[39m: [35mGET /docs/swagger-ui-bundle.js 304 - - 5.026 ms[39m
+[35m[39m
+2021-08-12 18:34:42:3442 [35mhttp[39m: [35mGET /docs/swagger-ui-init.js 304 - - 5.079 ms[39m
+[35m[39m
+2021-08-12 18:34:42:3442 [35mhttp[39m: [35mGET /docs/swagger-ui-standalone-preset.js 304 - - 12.056 ms[39m
+[35m[39m
+2021-08-12 18:34:42:3442 [35mhttp[39m: [35mGET /swagger.json 200 353 - 6.218 ms[39m
+[35m[39m
+2021-08-12 18:34:42:3442 [35mhttp[39m: [35mGET /docs/favicon-32x32.png 200 628 - 8.324 ms[39m
+[35m[39m
+2021-08-12 18:35:16:3516 [35mhttp[39m: [35mGET /docs/ 304 - - 1.717 ms[39m
+[35m[39m
+2021-08-12 18:35:16:3516 [35mhttp[39m: [35mGET /docs/swagger-ui.css 304 - - 1.425 ms[39m
+[35m[39m
+2021-08-12 18:35:16:3516 [35mhttp[39m: [35mGET /docs/swagger-ui-init.js 304 - - 2.234 ms[39m
+[35m[39m
+2021-08-12 18:35:16:3516 [35mhttp[39m: [35mGET /docs/swagger-ui-bundle.js 304 - - 11.225 ms[39m
+[35m[39m
+2021-08-12 18:35:16:3516 [35mhttp[39m: [35mGET /docs/swagger-ui-standalone-preset.js 304 - - 10.132 ms[39m
+[35m[39m
+2021-08-12 18:35:16:3516 [35mhttp[39m: [35mGET /swagger.json 304 - - 2.389 ms[39m
+[35m[39m
+2021-08-12 18:35:16:3516 [35mhttp[39m: [35mGET /docs/favicon-32x32.png 200 628 - 6.872 ms[39m
+[35m[39m
+2021-08-12 18:35:19:3519 [35mhttp[39m: [35mGET /docs/ 304 - - 1.308 ms[39m
+[35m[39m
+2021-08-12 18:35:19:3519 [35mhttp[39m: [35mGET /docs/swagger-ui.css 304 - - 1.188 ms[39m
+[35m[39m
+2021-08-12 18:35:19:3519 [35mhttp[39m: [35mGET /docs/swagger-ui-bundle.js 304 - - 7.054 ms[39m
+[35m[39m
+2021-08-12 18:35:19:3519 [35mhttp[39m: [35mGET /docs/swagger-ui-init.js 304 - - 8.077 ms[39m
+[35m[39m
+2021-08-12 18:35:19:3519 [35mhttp[39m: [35mGET /docs/swagger-ui-standalone-preset.js 304 - - 11.727 ms[39m
+[35m[39m
+2021-08-12 18:35:20:3520 [35mhttp[39m: [35mGET /swagger.json 304 - - 1.104 ms[39m
+[35m[39m
+2021-08-12 18:35:20:3520 [35mhttp[39m: [35mGET /docs/favicon-32x32.png 200 628 - 7.864 ms[39m
+[35m[39m
+2021-08-12 18:44:56:4456 [35mhttp[39m: [35mGET /docs/ 304 - - 8.227 ms[39m
+[35m[39m
+2021-08-12 18:44:56:4456 [35mhttp[39m: [35mGET /docs/swagger-ui.css 304 - - 7.740 ms[39m
+[35m[39m
+2021-08-12 18:44:56:4456 [35mhttp[39m: [35mGET /docs/swagger-ui-standalone-preset.js 304 - - 9.507 ms[39m
+[35m[39m
+2021-08-12 18:44:56:4456 [35mhttp[39m: [35mGET /docs/swagger-ui-init.js 304 - - 10.312 ms[39m
+[35m[39m
+2021-08-12 18:44:56:4456 [35mhttp[39m: [35mGET /docs/swagger-ui-bundle.js 304 - - 14.489 ms[39m
+[35m[39m
+2021-08-12 18:44:56:4456 [35mhttp[39m: [35mGET /swagger.json 200 353 - 6.513 ms[39m
+[35m[39m
+2021-08-12 18:44:56:4456 [35mhttp[39m: [35mGET /docs/favicon-32x32.png 200 628 - 5.538 ms[39m
+[35m[39m
+2021-08-12 19:12:23:1223 [35mhttp[39m: [35mGET /docs/ 304 - - 7.339 ms[39m
+[35m[39m
+2021-08-12 19:12:23:1223 [35mhttp[39m: [35mGET /docs/swagger-ui-bundle.js 304 - - 6.658 ms[39m
+[35m[39m
+2021-08-12 19:12:23:1223 [35mhttp[39m: [35mGET /docs/swagger-ui.css 304 - - 8.404 ms[39m
+[35m[39m
+2021-08-12 19:12:23:1223 [35mhttp[39m: [35mGET /docs/swagger-ui-init.js 304 - - 11.768 ms[39m
+[35m[39m
+2021-08-12 19:12:23:1223 [35mhttp[39m: [35mGET /docs/swagger-ui-standalone-preset.js 304 - - 15.532 ms[39m
+[35m[39m
+2021-08-12 19:12:24:1224 [35mhttp[39m: [35mGET /swagger.json 200 353 - 3.672 ms[39m
+[35m[39m
+2021-08-12 19:12:24:1224 [35mhttp[39m: [35mGET /docs/favicon-32x32.png 200 628 - 3.869 ms[39m
+[35m[39m
+2021-08-12 19:13:05:135 [35mhttp[39m: [35mGET /auth 404 143 - 3.954 ms[39m
+[35m[39m
+2021-08-12 19:13:50:1350 [35mhttp[39m: [35mGET /auth 404 143 - 8.232 ms[39m
+[35m[39m
+2021-08-12 19:13:55:1355 [35mhttp[39m: [35mGET /docs/ 404 144 - 1.110 ms[39m
+[35m[39m
+2021-08-12 19:13:59:1359 [35mhttp[39m: [35mGET /docs/ 404 144 - 0.763 ms[39m
+[35m[39m
+2021-08-12 19:16:02:162 [35mhttp[39m: [35mGET /docs/ 200 3104 - 10.197 ms[39m
+[35m[39m
+2021-08-12 19:16:02:162 [35mhttp[39m: [35mGET /docs/swagger-ui.css 304 - - 3.316 ms[39m
+[35m[39m
+2021-08-12 19:16:02:162 [35mhttp[39m: [35mGET /docs/swagger-ui-bundle.js 304 - - 2.699 ms[39m
+[35m[39m
+2021-08-12 19:16:02:162 [35mhttp[39m: [35mGET /docs/swagger-ui-init.js 304 - - 8.073 ms[39m
+[35m[39m
+2021-08-12 19:16:02:162 [35mhttp[39m: [35mGET /docs/swagger-ui-standalone-preset.js 304 - - 11.632 ms[39m
+[35m[39m
+2021-08-12 19:16:03:163 [35mhttp[39m: [35mGET /swagger.json 200 353 - 3.314 ms[39m
+[35m[39m
+2021-08-12 19:16:03:163 [35mhttp[39m: [35mGET /docs/favicon-32x32.png 200 628 - 2.826 ms[39m
+[35m[39m
+2021-08-12 19:16:08:168 [35mhttp[39m: [35mGET /swagger.json 304 - - 1.069 ms[39m
+[35m[39m
+2021-08-12 19:16:09:169 [35mhttp[39m: [35mGET /favicon.ico 404 150 - 1.781 ms[39m
+[35m[39m
