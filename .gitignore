@@ -7,3 +7,44 @@ Postgres/
 /parlador_api/dist
 
 /parlador_api/logs
+
+/parlador_api/*.txt
+
+
+
+
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/parlador_app/node_modules
+/parlador_app/.pnp
+/parlador_app/.pnp.js
+
+# testing
+/parlador_app/coverage
+
+# next.js
+/parlador_app/.next/
+/parlador_app/out/
+
+# production
+/parlador_app/build
+
+# misc
+/parlador_app/.DS_Store
+/parlador_app/*.pem
+
+# debug
+/parlador_app/npm-debug.log*
+/parlador_app/yarn-debug.log*
+/parlador_app/yarn-error.log*
+
+# local env files
+/parlador_app/.env.local
+/parlador_app/.env.development.local
+/parlador_app/.env.test.local
+/parlador_app/.env.production.local
+
+# vercel
+/parlador_app/.vercel
