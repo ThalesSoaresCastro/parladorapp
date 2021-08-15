@@ -10,11 +10,19 @@ import User from '@models/User'
 
 import ValidationValues from '@tools/validation_values'
 
+import jwt from 'jsonwebtoken'
+
 interface NewUser{
     id:string;
     name:string;
     password?:string;
     created_at:Date;
+}
+
+interface TokenPayload{
+  id:string;
+  iat:number;
+  exp:number;
 }
 
 class UserController {
@@ -120,6 +128,55 @@ class UserController {
     } catch {
       res.status(500).json({ message: 'Error to update user', data: {} })
     }
+  }
+
+  // --------------------------------------------------------
+  async get_user_by_token (req: Request, res: Response) {
+    const repository = getRepository(User)
+
+    const { token } = req.body
+
+    if (!token || token.length <= 0) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
+
+    if (!ValidationValues.validation_spaces(token)) {
+      res.status(422).json({ message: 'Data format incorrect', data: {} })
+      return
+    }
+
+    try {
+      // criando token de autenticação
+      const secret:string = process.env.SECRET!
+      const data = jwt.verify(token, secret)
+
+      const { id } = data as TokenPayload
+
+      const user = await repository.findOne({ where: { id: id } })
+
+      if (!user) {
+        res.status(200).json({
+          message: 'User not exist',
+          data: []
+        })
+        return
+      }
+
+      const user_return:NewUser = user
+
+      // retirando os passwords...
+      delete user_return.password
+
+      res.status(200).json({
+        message: 'User exist',
+        data: user
+      })
+    } catch {
+      res.status(422).json({ message: 'Token incorrect', data: {} })
+    }
+
+    // const user = await repository.findOne({ where: { email } })
   }
 
   // -------------------------------------------------------

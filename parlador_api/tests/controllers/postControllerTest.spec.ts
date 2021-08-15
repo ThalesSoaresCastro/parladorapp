@@ -10,6 +10,7 @@ let token:string
 // let idTest:string
 let idPost:string
 let idPostDelete:string
+
 beforeAll(async () => {
   await createConnect()
   // add user to token

@@ -176,6 +176,65 @@ describe('Teste User Controller', () => {
     })
   })
 
+  describe('Get One User by token', () => {
+    test('Get user token empty', async () => {
+      const user = {
+        token: ''
+      }
+
+      const resp = await request(app)
+        .post('/getbytoken')
+        .auth(token, { type: 'bearer' })
+        .send(user)
+
+      expect(resp.statusCode).toEqual(422)
+      expect(resp.body.data).toEqual({})
+    })
+
+    test('Get user token not exists', async () => {
+      const user = {
+      }
+
+      const resp = await request(app)
+        .post('/getbytoken')
+        .auth(token, { type: 'bearer' })
+        .send(user)
+
+      expect(resp.statusCode).toEqual(422)
+      expect(resp.body.data).toEqual({})
+    })
+
+    test('Get user  token incorrect', async () => {
+      const user = {
+        token: 'ayJhbGciOivIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQzMDA5YWQyLTNhNjMtNGEzNS1iNmQzLTVjZjg0ZWM4ZTRlMyIsImlhdCI6MTYyOTAwMTU3NywiZXhwIjoxNjI5MDg3OTc3fQ.R5XSKb5tpfqg2x8jDZ6gHi9UN00ZOB3dkF_F19oXMVU'
+      }
+
+      const resp = await request(app)
+        .post('/getbytoken')
+        .auth(token, { type: 'bearer' })
+        .send(user)
+
+      expect(resp.statusCode).toEqual(422)
+      expect(resp.body.message).toContain('Token incorrect')
+      expect(resp.body.data).toEqual({})
+    })
+
+    test('Get user token correct', async () => {
+      const user = {
+        token: token
+      }
+
+      const resp = await request(app)
+        .post('/getbytoken')
+        .auth(token, { type: 'bearer' })
+        .send(user)
+
+      expect(resp.statusCode).toEqual(200)
+      expect(resp.body.message).toContain('User exist')
+      // expect(resp.body.data.email).toEqual(user.email)
+    })
+  })
+
   describe('Get One User', () => {
     test('Get user email empty', async () => {
       const user = {

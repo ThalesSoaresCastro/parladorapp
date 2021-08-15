@@ -1,4 +1,3 @@
-
 import { Router } from 'express'
 import UserController from '@controllers/UserController'
 import AuthController from '@controllers/AuthController'
@@ -14,6 +13,7 @@ router.post('/getuser', authMiddleware, UserController.get_user)
 router.post('/deleteuser', authMiddleware, UserController.delete_user)
 router.post('/updateuser/:id', authMiddleware, UserController.update_user)
 router.get('/users', authMiddleware, UserController.get_all)
+router.post('/getbytoken', authMiddleware, UserController.get_user_by_token)
 
 router.post('/createpost', authMiddleware, PostController.postStore)
 router.post('/getallpostuser', authMiddleware, PostController.getAllPostUser)
