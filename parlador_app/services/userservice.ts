@@ -13,10 +13,9 @@ interface UserCreate{
 export const userByToken = async(usertoken:tokenUser) => {
     const url = '/getbytoken'
     
-    return await api.post(url,usertoken, {
-        headers: {'Authorization': 'Bearer '+usertoken.token }
-    }
-        
+    return await api.post(url,usertoken//, {
+       // headers: {'Authorization': 'Bearer '+usertoken.token }
+    //}
     ).then(
         resp => { return resp }
     ).catch(

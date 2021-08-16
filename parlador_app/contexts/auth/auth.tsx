@@ -51,7 +51,7 @@ export const AuthProvider: React.FC = ({ children }) => {
                 'nextpaladorapp.token', 
                 response.data.data.token,
                 {
-                    maxAge:60*60*1, //duração do token de 1 hora
+                    maxAge:60*60*3, //duração do token de 3 horas
                 }
             )
             Router.push('/principal');
