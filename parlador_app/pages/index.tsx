@@ -45,6 +45,7 @@ export default function Home() {
       <Heading mb={4}> Logar </Heading>
       <Input 
         placeholder="seumail@mail.com"
+        focusBorderColor="orange.300"
         variant="filled" 
         mb={3} 
         type="email"
@@ -52,6 +53,7 @@ export default function Home() {
       />
       <Input 
         placeholder="*********"
+        focusBorderColor="orange.300"
         variant="filled"
         mb={6}
         type="password"

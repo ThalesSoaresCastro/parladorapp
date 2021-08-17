@@ -44,7 +44,7 @@ const principal: React.FC = () => {
             }
         }
         postsRequest()
-    },[])
+    },[ posts.length ])
 
     //console.log('Post: ', new Date(posts[0]?.created_at) )
 
@@ -61,15 +61,27 @@ const principal: React.FC = () => {
         return(
             <Box direction="column" background="gray.700"  boxShadow="2xl" p={8} rounded={6} w='90%' margin={2}>    
                 <Flex direction='row-reverse'>
-                    <Text marginLeft={4} color="orange" > {post?.changed? 'Editado' : '' } </Text>
+                    <Text marginLeft={4}  marginRight={4} color="orange" > {post?.changed? 'Editado' : '' } </Text>
                     <Text> {post?.changed? formatData(post?.edited_in) : formatData(post?.created_at) } </Text>
                 </Flex>
                 <Flex direction="row">   
-                    <FiUser size={25} />
+                    <Box
+                        background={(user?.name === post?.user_name?"white" : "transparent")}
+                        borderRadius={20}
+                        md="md"
+                        padding={1}
+                    >
+                        <FiUser 
+                        size={22}
+                        color={(user?.name === post?.user_name?"black" : "white")}
+                        />
+                    </Box>
+
                     <Text
-                    fontWeight='bold'
-                    fontSize='1.1em'
-                    marginLeft={3}
+                        fontWeight='bold'
+                        fontSize='1.1em'
+                        marginLeft={3}
+                        color={(user?.name === post?.user_name?"orange" : "white")}
                     > 
                         {post?.user_name}
                     </Text>

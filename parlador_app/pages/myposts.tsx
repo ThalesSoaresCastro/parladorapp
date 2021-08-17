@@ -45,15 +45,36 @@ import { useCallback } from 'react';
 import Router from 'next/router';
 
 
+
+interface IPost{
+  id?:string;
+  text_post?: string;
+  created_at?: Date;
+  edited_in?: Date | null
+  changed?: boolean;
+  user?:IUser;
+}
+
+interface IUser{
+  id?:string;
+  name?: string;
+  email?: string;
+  password?:string;
+  created_at?: Date;
+  edited_in?: Date | null;
+  posts?: IPost[] | undefined;
+}
+
+
 const myposts: React.FC = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [postaux, setPostAux] = useState({})
-  const [newtxtpost, setNewTxtPost] = useState('')
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { user } = useContext(AuthContext)
 
-  const { onClose } = useDisclosure()
+  const [postaux, setPostAux] = useState({} as IPost)
+  const [newtxtpost, setNewTxtPost] = useState('')
+  const [posts, setPosts] = useState([] as IPost[])
 
+  const { onClose } = useDisclosure()
   const [onOpen, SetOnOpen] = useState(false)
 
   const formatData = (data:string) =>{    
@@ -63,12 +84,14 @@ const myposts: React.FC = () => {
       );
   }
 
-
   const alteraPost = async(txt:string , email:string, idp:string) =>{
     const objP = {
       post:txt,
       userEmail:email
     }
+
+    //console.log('objP: ', objP,'\n\n idpost: ', idp)
+
     const resp = await UpdatePost(objP, idp)
     if(resp.status === 200 || resp.status === 201 ){
       alert('Post atualizado com sucesso');
@@ -76,9 +99,17 @@ const myposts: React.FC = () => {
     else{
       alert('Ocorreu um erro ao atualizar o post.');
     }
-
-
   }
+
+  useEffect( ()=>{
+    async function postUpdate(){
+      let resp = await GetPostToUser({ userEmail: user?.email as string })
+      if(resp.status === 200 ||  resp.status === 201){
+        setPosts(resp.data.data.posts)
+      }
+    }
+    postUpdate()
+  }, [user] )
 
   const postElement = (post:any) =>{
       //console.log(post)
@@ -102,8 +133,6 @@ const myposts: React.FC = () => {
                   >
                     <FiTrash2 />
                   </Button>
-
-
                   <Button
                     mr={2}
                     backgroundColor="orange"
@@ -119,17 +148,27 @@ const myposts: React.FC = () => {
                   >
                     <FiRefreshCcw />
                   </Button>
-
-
-                  <Text marginLeft={4} color="orange" > {post?.changed? 'Editado' : '' } </Text>
+                  <Text marginLeft={4} marginRight={4} color="orange" > {post?.changed? 'Editado' : '' } </Text>
                   <Text> {post?.changed? formatData(post?.edited_in) : formatData(post?.created_at) } </Text>
               </Flex>
               <Flex direction="row">   
-                  <FiUser size={25} />
+                    <Box
+                        background="white"
+                        borderRadius={20}
+                        md="md"
+                        padding={1}
+                    >
+                        <FiUser 
+                        size={22}
+                        color="black"
+                        />
+                    </Box>
+
                   <Text
                   fontWeight='bold'
                   fontSize='1.1em'
                   marginLeft={3}
+                  color="orange"
                   > 
                       {user?.name}
                   </Text>
@@ -166,7 +205,7 @@ const myposts: React.FC = () => {
               colorScheme="orange"
               mr={3}
               onClick={async() =>{ 
-                await alteraPost(newtxtpost,user?.id as string,postaux?.id as string)
+                await alteraPost(newtxtpost,user?.email as string,postaux?.id as string)
                 SetOnOpen(!onOpen)
                 Router.reload()
               
@@ -182,8 +221,11 @@ const myposts: React.FC = () => {
       <SidebarWithHeader>
           <Flex height="100vh" alignItems="center" justifyContent="center">
               <Flex direction="column" w='100vh' h='100vh' alignItems='center' pt={12} pe={12}>
-                  { user?.posts?.length && user?.posts?.length > 0 ?
-                    user?.posts?.map(post =>{
+                  <Heading pd={2}>
+                    Meus Posts
+                  </Heading>
+                  { posts?.length && posts?.length > 0 ?
+                    posts?.map(post =>{
                       return postElement(post)
                     })
                     :

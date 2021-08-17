@@ -35,6 +35,7 @@ const pages: React.FC = () => {
                 <Input
                     mt={2} 
                     placeholder="seu nome" 
+                    focusBorderColor="orange.300"
                     variant="filled" 
                     mb={6} 
                     type="text"
@@ -44,6 +45,7 @@ const pages: React.FC = () => {
                 />
                 <Input 
                     placeholder="seumail@mail.com"
+                    focusBorderColor="orange.300"
                     variant="filled"
                     mb={6}
                     type="email"
@@ -53,6 +55,7 @@ const pages: React.FC = () => {
                 />
                 <Input 
                     placeholder="*********"
+                    focusBorderColor="orange.300"
                     variant="filled"
                     mb={6}
                     type="password"
