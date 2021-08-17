@@ -10,6 +10,7 @@ import {
     Box,
     Text,
     Textarea,
+    Heading,
 } from '@chakra-ui/react'
 
 import SidebarWithHeader from '../components/sidebar'
@@ -41,7 +42,6 @@ const principal: React.FC = () => {
             if(response.status === 200){
                 await setPosts(response.data.data)
             }
-
         }
         postsRequest()
     },[])
@@ -57,7 +57,7 @@ const principal: React.FC = () => {
     }
 
     const postElement = (post:any) =>{
-        console.log(post)
+        //console.log(post)
         return(
             <Box direction="column" background="gray.700"  boxShadow="2xl" p={8} rounded={6} w='90%' margin={2}>    
                 <Flex direction='row-reverse'>
@@ -88,9 +88,11 @@ const principal: React.FC = () => {
 
             <Flex height="100vh" alignItems="center" justifyContent="center">
                 <Flex direction="column" w='100vh' h='100vh' alignItems='center' pt={12} pe={12}>
-                    {posts? posts?.map(post =>{
+                    {posts.length > 0? posts?.map(post =>{
                     return postElement(post)
-                    }):''}
+                    }):
+                        <Heading>Não existem posts cadastrados</Heading>
+                    }
                 </Flex>
             </Flex>
         </SidebarWithHeader>

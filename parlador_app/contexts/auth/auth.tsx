@@ -10,7 +10,29 @@ import {setCookie, parseCookies} from 'nookies'
 
 import Router from 'next/router'
 
-interface Login{
+
+
+
+interface IPost{
+    id?:string;
+    text_post?: string;
+    created_at?: Date;
+    edited_in?: Date | null
+    changed?: boolean;
+    user?:IUser;
+}
+
+interface IUser{
+    id?:string;
+    name?: string;
+    email?: string;
+    password?:string;
+    created_at?: Date;
+    edited_in?: Date | null;
+    posts?: IPost[] | undefined;
+}
+
+interface ILogin{
     email: string;
     password: string;
 }
@@ -18,8 +40,8 @@ interface Login{
 interface AuthContextData{
     signed: boolean;
     //token: string;
-    user:object | null;
-    signIn: (login:Login) => Promise<void>;
+    user:IUser | null;
+    signIn: (login:ILogin) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -42,7 +64,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         fetchUser()
     },[])
 
-    async function signIn(login: Login) {
+    async function signIn(login: ILogin) {
         const response = await authService(login);
 
         if(response.status === 200){            

@@ -31,7 +31,9 @@ const pages: React.FC = () => {
         <Flex height="100vh" alignItems="center" justifyContent="center">
             <Flex direction="column" background="gray.700"  p={12} rounded={10}>
                 <Heading>Cadastro</Heading>
-                <Input 
+
+                <Input
+                    mt={2} 
                     placeholder="seu nome" 
                     variant="filled" 
                     mb={6} 
@@ -43,7 +45,7 @@ const pages: React.FC = () => {
                 <Input 
                     placeholder="seumail@mail.com"
                     variant="filled"
-                    mb={3}
+                    mb={6}
                     type="email"
                     onChange={(e)=>{
                         setEmail(e.target.value)
@@ -65,6 +67,7 @@ const pages: React.FC = () => {
                         const response = await userCreate({name:name, email:email, password:password})
                         
                         if(response.status === 201){
+                            alert('Cadastro feito com sucesso!')
                             Router.push('/')
                         }else{
                             alert('Não foi possível efetuar o cadastro.\nVerifique as informações inseridas!');

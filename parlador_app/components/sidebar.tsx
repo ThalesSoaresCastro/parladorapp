@@ -46,8 +46,8 @@ interface LinkItemProps {
   urlRouter:string;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome, urlRouter:'#' },
-  { name: 'Meus Posts', icon: FiBookOpen , urlRouter:'#' },
+  { name: 'Home', icon: FiHome, urlRouter:'/principal' },
+  { name: 'Meus Posts', icon: FiBookOpen , urlRouter:'/myposts' },
   {name: 'Novo Post', icon: FiMessageCircle , urlRouter:'/criarpost'},
   { name: 'Sair', icon: FiLogOut, urlRouter:'/' },
 ];

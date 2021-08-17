@@ -1,4 +1,9 @@
+
 import api from "../api/api"
+
+
+import AuthContext from '../contexts/auth/auth';
+
 
 interface PostCreate{
     post:string;
@@ -35,6 +40,8 @@ export const CreatePost = async(post:PostCreate) =>{
 
 export const UpdatePost = async(post: PostCreate, idpost:string) =>{
     const url = `/updatepost/${idpost}`
+
+    console.log('post: ', post)
     
     return await api.post(url, post).then(
         resp => { return resp }
@@ -53,7 +60,9 @@ export const DeletePost = async(post: PostDelete ) => {
     )
 }
 
-export const GetPostToUser = async(user: UserInfo  ) => {
+export const GetPostToUser = async(user: any  ) => {
+    console.log('UserInfo: ', user)
+
     const url='/getallpostuser'
 
     return await api.post(url, user).then(
