@@ -28,6 +28,7 @@ import SidebarWithHeader from '../components/sidebar'
 
 
 import AuthContext from '../contexts/auth/auth';
+import Router from 'next/router'
 
 const alterarinfo: React.FC = () => {
 
@@ -64,7 +65,7 @@ const alterarinfo: React.FC = () => {
 
         if(response.status === 201){
             result.status="sucess";
-            result.msg = "Infos atualizadas com sucesso!";
+            result.msg = "Dados atualizados com sucesso!";
         }else{
             result.status = "error";
             result.msg = "Erro ao atualizar as informações\n, tente novamente mais tarde!"
@@ -130,6 +131,10 @@ const alterarinfo: React.FC = () => {
                                                 user
                                             )
                             alert(responsePost.msg)
+                            Router.reload()
+                            
+
+                            //Router.push('/principal')
                         }}
                     >
                         Enviar

@@ -17,6 +17,8 @@ import SidebarWithHeader from '../components/sidebar'
 
 import {ChatIcon } from '@chakra-ui/icons'
 
+import Router from 'next/router';
+
 import {
     FiMessageSquare,
     FiUser,
@@ -44,7 +46,7 @@ const principal: React.FC = () => {
             }
         }
         postsRequest()
-    },[ posts.length ])
+    },[ posts.length])
 
     //console.log('Post: ', new Date(posts[0]?.created_at) )
 
@@ -99,7 +101,7 @@ const principal: React.FC = () => {
         <SidebarWithHeader>
 
             <Flex height="100vh" alignItems="center" justifyContent="center">
-                <Flex direction="column" w='100vh' h='100vh' alignItems='center' pt={12} pe={12}>
+                <Flex direction="column" w='100vh' h='100vh' alignItems='center' pt={4} pe={12} >
                     {posts.length > 0? posts?.map(post =>{
                     return postElement(post)
                     }):
