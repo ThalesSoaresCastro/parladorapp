@@ -1,3 +1,5 @@
+
+#BACK-END
 Postgres/
 
 /parlador_api/node_modules
@@ -13,7 +15,7 @@ Postgres/
 
 
 
-
+#FRONT-END
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -48,3 +50,61 @@ Postgres/
 
 # vercel
 /parlador_app/.vercel
+
+
+#MOBILE
+
+# OSX
+#
+/parlador-mobile/.DS_Store
+
+# Xcode
+#
+/parlador-mobile/build/
+/parlador-mobile/*.pbxuser
+/parlador-mobile/!default.pbxuser
+/parlador-mobile/*.mode1v3
+/parlador-mobile/!default.mode1v3
+/parlador-mobile/*.mode2v3
+/parlador-mobile/!default.mode2v3
+/parlador-mobile/*.perspectivev3
+/parlador-mobile/!default.perspectivev3
+/parlador-mobile/xcuserdata
+/parlador-mobile/*.xccheckout
+/parlador-mobile/*.moved-aside
+/parlador-mobile/DerivedData
+/parlador-mobile/*.hmap
+/parlador-mobile/*.ipa
+/parlador-mobile/*.xcuserstate
+/parlador-mobile/project.xcworkspace
+
+# Android/IntelliJ
+#
+/parlador-mobile/build/
+/parlador-mobile/.idea
+/parlador-mobile/.gradle
+/parlador-mobile/local.properties
+/parlador-mobile/*.iml
+/parlador-mobile/*.hprof
+
+# node.js
+#
+/parlador-mobile/node_modules/
+/parlador-mobile/npm-debug.log
+/parlador-mobile/yarn-error.log
+
+# BUCK
+/parlador-mobile/buck-out/
+/parlador-mobile/\.buckd/
+/parlador-mobile/*.keystore
+/parlador-mobile/!debug.keystore
+
+# Bundle artifacts
+/parlador-mobile/*.jsbundle
+
+# CocoaPods
+/parlador-mobile/ios/Pods/
+
+# Expo
+/parlador-mobile/.expo/
+/parlador-mobile/web-build/
