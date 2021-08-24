@@ -9,6 +9,7 @@ Postgres/
 /parlador_api/dist
 
 /parlador_api/logs
+/parlador_api/logs/*
 
 /parlador_api/*.txt
 
