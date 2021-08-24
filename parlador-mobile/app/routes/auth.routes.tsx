@@ -25,7 +25,7 @@ const AuthRoutes: React.FC = () =>(
                 component={Cadastro}  
                 options={{
                             headerStyle:{
-                                backgroundColor:`${theme.colors['primary-color-dark']}`,
+                                backgroundColor:`${theme.colors['principal-dark']}`,
                             },
                             headerTintColor:'white'
                         }}

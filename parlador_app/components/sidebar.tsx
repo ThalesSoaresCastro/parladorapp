@@ -177,7 +177,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const { user } = useContext(AuthContext)
   const [openAlert, setOpenAlert] = useState(false)
   const onClose = () => setOpenAlert(false)
-  const cancelRef = React.useRef()
+  const cancelRef = React.useRef<any>()
 
   return (
   <>
@@ -284,7 +284,10 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
+              <Button 
+                //ref={cancelRef}
+                onClick={onClose}
+              >
                 Cancelar
               </Button>
               <Button 

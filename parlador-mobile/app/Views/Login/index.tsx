@@ -14,16 +14,25 @@ import {
     ButtonGray,
     TextButtonNewUser,
     ViewLoadingAnimation,
+    ViewModalOpacity,
+    ViewModal,
+    TextModalTitle,
+    TextModal,
 } from './styles';
+
+import {
+    Modal,
+} from 'react-native';
 
 import LottieView from 'lottie-react-native';
 
 import AuthContext from '../../contexts/auth/auth';
 
 const img_dir  = '../../public/images/logoopen2-rsemfundo.png'
-
 const loading = '../../animations/loading-animation.json'
+import { AntDesign } from '@expo/vector-icons'
 
+import authService from '../../services/authservice'
 
 const Login: React.FC = ({navigation}:any) => {
     
@@ -31,11 +40,34 @@ const Login: React.FC = ({navigation}:any) => {
 
     const [email, SetEmail] = useState('');
     const [password, SetPassword] = useState(''); 
-
     const [animationOn, SetAnimationOn] = useState(false);
+    
+    const [modal, SetModal] = useState(false);
+    const [msgModal, SetMsgModal] = useState([]);
 
+    async function handleSignIn(){
+        const loginObj = {
+            email:email,
+            password:password
+        }
+        let msg;
 
+        if(!email || email === '' || 
+            !password || password === ''){
+            msg = ['Error','Email e/ou senha devem ser preenchidos.'];
+                //return
+            }
+        else{     
+            msg = ['Sucesso','login ok'];
+            //await signIn(loginObj);
 
+            const resp = await authService(loginObj);
+
+            console.log('Response: ',resp);
+        }
+        await SetMsgModal(msg);
+        await SetModal(true);
+    }
   return(
       <Container>
           <ViewValue>
@@ -52,11 +84,9 @@ const Login: React.FC = ({navigation}:any) => {
             />
 
             <ButtonOrange
-                onPress={()=>{
+                onPress={async()=>{
                     SetAnimationOn(!animationOn);
-
-                    console.log('\nEmail: ', email,'\nPassword: ',password,'\n');
-
+                    await handleSignIn()
                 }}
             >
                 <TextButton>
@@ -87,7 +117,7 @@ const Login: React.FC = ({navigation}:any) => {
                         //width : '200%',
                         alignItems:'center', 
                         // backgroundColor:'green', 
-                        marginTop:'-10%'
+                        marginTop:'-5%'
                     }}
                 />:null
             }
@@ -100,6 +130,35 @@ const Login: React.FC = ({navigation}:any) => {
                     source={require(img_dir)}
                 />
           </ViewImage>
+
+        {
+            modal?
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modal}
+                    statusBarTranslucent={true}
+                >
+                    <ViewModalOpacity>
+                        <ViewModal>
+                            <AntDesign name="exclamationcircle" size={42} color="orange" />
+                            <TextModalTitle>{msgModal[0]}</TextModalTitle>
+                            <TextModal>
+                                {msgModal[1]}
+                            </TextModal>
+                            <ButtonOrange
+                                onPress={()=>{SetModal(false);}}
+                            >
+                                <TextButton>
+                                    Ok
+                                </TextButton>
+                            </ButtonOrange>
+                        </ViewModal>
+                    </ViewModalOpacity>
+                </Modal>
+            :null
+        }
+
       </Container>
   );
 }

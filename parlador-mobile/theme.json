@@ -1,6 +1,7 @@
 {
     "colors":{
-        "primary-color-dark":"#232323",
+        "principal-dark":"#121212",
+        "dark-800":"#232323",
         "secundary-color-dark":"black",
         "gray-800":"#2e2e2e",
         "gray-600":"#424242",
@@ -13,11 +14,12 @@
         "orange-100":"#eead2d"
     },
     "fonts":{
-        "large":24,
+        "lg":24,
         "md":16,
         "sm":12
     },
     "style":{
-        "border-radius-main":8
+        "border-radius-main":8,
+        "elevation-main":4
     }
 }

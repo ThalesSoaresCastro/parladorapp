@@ -11,8 +11,6 @@ import {
 //import Router from 'next/router'
 
 
-
-
 interface IPost{
     id?:string;
     text_post?: string;

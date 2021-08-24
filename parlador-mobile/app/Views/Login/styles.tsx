@@ -7,7 +7,7 @@ import theme from '../../../theme.json'
 
 export const Container = styled.View`
   flex:1;
-  background-color: ${theme.colors['orange-200']};
+  background-color: ${theme.colors['principal-dark']};
   flex-direction: column-reverse;
   align-items:center;
 `;
@@ -19,7 +19,7 @@ export const InputValue = styled.TextInput.attrs({
 })`
     width: 90%;
     height: 18%;
-    background-color: ${theme.colors['gray-800']};
+    background-color: ${theme.colors['dark-800']};
     margin-top: 3%;
     border-bottom-width: 3px;
     border-radius: ${theme.style['border-radius-main']}px;
@@ -37,6 +37,23 @@ export const ViewValue = styled.View`
     background-color: transparent;
     justify-content: center;
     align-items: center;
+`;
+
+export const ViewModalOpacity = styled.View`
+    flex:1;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: flex-end;
+    align-items: center;
+`;
+
+export const ViewModal = styled.View`
+    width: 100%;
+    height: 35%;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: ${theme.colors['principal-dark']};
+    opacity: 1;
+    border-radius: ${theme.style['border-radius-main']}px;
 `;
 
 export const ViewLoadingAnimation = styled.View`
@@ -75,7 +92,7 @@ export const ButtonOrange = styled.TouchableOpacity`
 export const ButtonGray = styled.TouchableOpacity`
     width: 90%;
     height: 15%;
-    background-color: ${theme.colors['gray-800']};
+    background-color: ${theme.colors['dark-800']};
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -92,6 +109,18 @@ export const TextButtonNewUser = styled.Text`
 `;
 
 
+export const TextModal = styled.Text`
+    color:${theme.colors['orange-200']};
+    font-size: ${theme.fonts['md']}px;
+    font-weight: bold;
+    margin:4%;
+`;
+export const TextModalTitle = styled.Text`
+    color:${theme.colors['orange-200']};
+    font-size: ${theme.fonts['lg']}px;
+    font-weight: bold;
+    margin:4%;
+`;
 
 export const TextButton = styled.Text`
     color: black;

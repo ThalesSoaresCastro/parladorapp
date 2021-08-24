@@ -1,41 +1,43 @@
-import React from 'react';
+import React,
+{
+    useState,
+} from 'react';
 import { 
     Container,
     ButtonOrange,
     InputValue,
     TextButton,
     ViewValue,
-    TextButtonNewUser,
-    ContanerInput,
 } from './styles';
-import LinearGradient from 'react-native-linear-gradient';
-
-import theme from '../../../theme.json'
 
 const Cadastro: React.FC = () => {
-  return(
+    const [nome, SetNome] = useState('');
+    const [email, SetEmail] = useState('');
+    const [password, SetPassword] = useState('');
+    return(
         <Container>
                 <ViewValue>
-                    <ContanerInput>
-                        <TextButtonNewUser>
-                            Nome
-                        </TextButtonNewUser>
-                        <InputValue />
-                    </ContanerInput>
-                    
-                    <ContanerInput>
-                        <TextButtonNewUser>
-                            Email
-                        </TextButtonNewUser>
-                        <InputValue />
-                    </ContanerInput>
-                 <ContanerInput>
-                        <TextButtonNewUser>
-                            Senha
-                        </TextButtonNewUser>
-                        <InputValue />
-                    </ContanerInput>
-                 <ButtonOrange>
+                        <InputValue 
+                            placeholder={'Nome'}
+                            //value={nome}
+                            onChangeText={(txt:string)=>{SetNome(txt);}}
+                        />    
+                        <InputValue
+                            placeholder={'Email'}
+                            //value={email}
+                            onChangeText={(txt:string)=>{SetEmail(txt);}}
+                        />
+                        <InputValue
+                            placeholder={'Senha'}
+                            secureTextEntry={true}
+                            //value={password}
+                            onChangeText={(txt:string)=>{SetPassword(txt);}}
+                        />
+                 <ButtonOrange
+                    onPress={()=>{
+                        console.log('\n\nNome: ', nome,'\nEmail: ', email,'\nPassword: ',password, '\n\n');
+                    }}
+                 >
                         <TextButton>
                             Cadastrar
                         </TextButton>

@@ -7,7 +7,7 @@ import theme from '../../../theme.json'
 
 export const Container = styled.View`
   flex:1;
-  background-color: ${theme.colors['primary-color-dark']};
+  background-color: ${theme.colors['principal-dark']};
   flex-direction: column;
   align-items:center;
   justify-content: center;
@@ -17,9 +17,9 @@ export const InputValue = styled.TextInput.attrs({
     placeholderTextColor: `${theme.colors['gray-200']}`
 
 })`
-    width: 100%;
-    height:50%;
-    background-color: ${theme.colors['gray-800']};
+    width: 90%;
+    height:20%;
+    background-color: ${theme.colors['dark-800']};
     margin-top: 0.2%;
     border-bottom-width: 3px;
     border-radius: ${theme.style['border-radius-main']}px;
@@ -34,7 +34,7 @@ export const InputValue = styled.TextInput.attrs({
 export const ViewValue = styled.View`
     height: 60%;
     width: 90%;
-    background-color: ${theme.colors['gray-800']};
+    background-color: ${theme.colors['dark-800']};
     justify-content: center;
     align-items: center;
     elevation:8;
@@ -75,7 +75,7 @@ export const ButtonGray = styled.TouchableOpacity`
     justify-content: center;
     text-align: center;
     margin: 0.5%;
-    elevation:4;
+    elevation: ${theme.style['elevation-main']};
     border-radius: ${theme.style['border-radius-main']}px;
 `;
 

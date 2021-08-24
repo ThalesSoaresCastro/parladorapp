@@ -33,7 +33,7 @@ services:
       - parlador-app
 
   ###########################################
-  #TESTE
+  #BACK
   parlador-api:
     container_name: 'parlador-api'
     build: './parlador_api'
@@ -50,6 +50,25 @@ services:
     environment: 
       - DB_HOST=postgres-db
   #############################################
+
+  ###########################################
+  #FRONT
+  parlador-front:
+    container_name: 'parlador-front'
+    build: './parlador_app'
+    command: dev
+    volumes:
+      - ./parlador_app:/usr/src/app/
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+    ports:
+      - '3000:3000'
+    depends_on: 
+      - 'parlador-api'
+    networks:
+      - 'parlador-app'
+  #############################################
+
 networks: 
   parlador-app:
     driver: bridge
