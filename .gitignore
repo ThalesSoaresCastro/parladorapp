@@ -109,3 +109,6 @@ Postgres/
 # Expo
 /parlador-mobile/.expo/
 /parlador-mobile/web-build/
+
+
+/parlador-mobile/*.txt
