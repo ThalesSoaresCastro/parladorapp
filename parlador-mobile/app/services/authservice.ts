@@ -10,9 +10,13 @@ const authService = async(user:UserLogin) =>{
     const url = '/auth'
     
     return await api.post(url, user).then(
-        resp => {return resp}
+        resp => { 
+            return resp
+        }
     ).catch(
-        error => {return error}
+        
+        error => { 
+            return error}
     )
 
 

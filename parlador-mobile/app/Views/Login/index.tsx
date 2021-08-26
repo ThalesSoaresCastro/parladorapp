@@ -58,12 +58,15 @@ const Login: React.FC = ({navigation}:any) => {
                 //return
             }
         else{     
-            msg = ['Sucesso','login ok'];
-            //await signIn(loginObj);
+            await signIn(loginObj);
 
             const resp = await authService(loginObj);
 
-            console.log('Response: ',resp);
+            if(resp.status === 200){
+                msg = ['Sucesso','login ok'];
+            }else{
+                msg = ['Error','Verifique seu usuário e/ou senha.'];
+            }
         }
         await SetMsgModal(msg);
         await SetModal(true);
